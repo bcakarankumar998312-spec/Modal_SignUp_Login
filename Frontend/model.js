@@ -178,6 +178,11 @@ signup_submit.addEventListener("click", async function(){
 
        const data = await response.json();
        console.log(data);
+
+       if(!response.ok){
+        alert(data.message || "Signup failed, Please try again.");
+        return;
+       }
         
        signup_modal.style.display = "none";
 
