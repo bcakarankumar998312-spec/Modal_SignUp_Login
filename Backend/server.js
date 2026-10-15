@@ -107,6 +107,8 @@ app.post("/login", async (req, res) => {
 
         //Login credentials are correct
         req.session.userId = user._id;
+        console.log("Session ID:", req.sessionID);
+        console.log("Session user ID:", req.session.userId);
 
         res.status(200).json({
             success:true,
