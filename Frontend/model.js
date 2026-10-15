@@ -96,7 +96,7 @@ login_submit.addEventListener("click", async function () {
     }
     
     try {
-        const response = await fetch("http://127.0.0.1:3000/login", {
+        const response = await fetch("https://modal-signup-login.onrender.com/login", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -168,7 +168,7 @@ signup_submit.addEventListener("click", async function(){
     };
 
     try{
-       const response = await fetch("http://127.0.0.1:3000/signup", {
+       const response = await fetch("https://modal-signup-login.onrender.com/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -214,7 +214,7 @@ logOutacc.addEventListener("click", function(){
 
 async function checkLoginStatus(){
     try{
-        const response = await fetch("http://127.0.0.1:3000/me", {
+        const response = await fetch("https://modal-signup-login.onrender.com/me", {
             method: "GET",
             credentials: "include"
         });

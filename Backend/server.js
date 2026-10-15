@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import session from "express-session";
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 dotenv.config();
@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL)
     
 //Allow requests from your frontend
 app.use(cors({
-  origin: 'http://127.0.0.1:5500',
+  origin: 'https://modal-signup-login.onrender.com',
   credentials: true
 }));
 
@@ -34,7 +34,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false
+        secure: true,
+        sameSite: "none"
     }
 }));
 
