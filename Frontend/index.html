@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal/Popup</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav-main">
+        <div class="web-name">Normal Page</div>
+        <i class="fa-solid fa-bars"></i>
+        <div class="log-sign">
+          <button class="log">Login</button>
+          <button class="sign">Sign-Up</button>
+        </div>        
+      </div>
+
+      <div class="body"></div>
+
+      <div class="login-modal">
+          <h2>Login</h2>
+
+          <input type="email" placeholder="email" id="login-email">
+          <input type="password" placeholder="password" id="login-password">
+
+          <div class="login-modalBtn">
+            <button id="login-submit">Login</button>
+            <button id="login-close">Close</button>
+          </div>
+          
+        </div>
+
+        <div class="signup-modal">
+          <h2>Sign Up</h2>
+
+          <input type="text" id="signup-name" placeholder="Name">
+          <input type="email" id="signup-email" placeholder="Email">
+          <input type="password" id="signup-password" placeholder="password">
+
+          <div class="signup-modalBtn">
+            <button id="signup-submit">Sign Up</button>
+            <button id="signup-close">Close</button>
+          </div>
+        </div>
+
+      <div class="nav-popup">
+        <a href="profile.html" class="myacc">My Account</a>
+        <div class="deleteacc">Delete Account</div>
+        <div class="logOutacc">Log Out</div>
+      </div>
+
+      <div class="overlay"></div>
+
+      <div class="deleteconf">
+        <p>Please ensure are you really want to delete this Account Parmanently!</p>
+        <div class="delconbtns">
+            <button id="cancel-btn">Cancel</button>
+            <button id="del-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="model.js"></script>
+  </body>
+</html>
