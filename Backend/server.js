@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL)
     
 //Allow requests from your frontend
 app.use(cors({
-  origin: 'https://modal-signup-login.onrender.com',
+  origin: 'https://modalsignuplogin-frontend.vercel.app',
   credentials: true
 }));
 
