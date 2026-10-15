@@ -196,9 +196,9 @@ app.post("/logout", (req, res)=> {
         }
 
         res.clearCookie("connect.sid", {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax"
+        httpOnly: true,
+        secure: true,
+        sameSite: "none"
         });
 
         return res.status(200).json({

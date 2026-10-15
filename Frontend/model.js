@@ -207,12 +207,32 @@ signup_submit.addEventListener("click", async function(){
 
 //LogOut section
 
-logOutacc.addEventListener("click", function(){
-    localStorage.setItem("isLoggedIn", "false");
-    bars[0].style.display = "none";
-    nav_popup[0].style.display = "none";
-    log_sign.style.display ="flex";
-    log.style.display = "block";
+logOutacc.addEventListener("click", async function(){
+
+    try {
+        const response = await fetch("https://modal-signup-login.onrender.com/logout", {
+            method: "POST",
+            credentials: "include"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message);
+            return;
+        }
+
+        bars[0].style.display = "none";
+        nav_popup[0].style.display = "none";
+        log_sign.style.display = "flex";
+        log.style.display = "block";
+
+        alert(data.message);
+
+    } catch (error) {
+        console.error("Logout error:", error);
+        alert("Unable to connect to the server!");
+    }
 });
 
 
