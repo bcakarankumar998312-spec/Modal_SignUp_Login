@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -28,15 +29,24 @@ app.use(cors({
 //Allow Express to read JSON request bodies
 app.use(express.json());
 
+app.set("trust proxy", 1);
+
 app.use(session({
+    name: "connect.sid",
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
         secure: true,
-        sameSite: "none"
-    }
+        sameSite: "none",
+        maxAge:24 * 60 * 1000
+    },
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URL,
+        collectionName: "sessions",
+        ttl: 24 * 60 * 1000
+    })
 }));
 
 //Test route
@@ -108,13 +118,15 @@ app.post("/login", async (req, res) => {
         //Login credentials are correct
         req.session.userId = user._id;
        
-        if(error){
-            console.error("Session save error:", error.message);
-            return res.status(500).json({
-                success: false,
-                message: "Unable to save login session."
-            });
-        }
+        req.session.save((error)=>{
+            if(error){
+                console.error("Session save error:",error.message);
+                return res.status(500).json({
+                    success: false,
+                    message:"Unable to save login session."
+                });
+            }
+        })
 
         res.status(200).json({
             success:true,
